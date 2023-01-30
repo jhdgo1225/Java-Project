@@ -70,7 +70,6 @@ public class SignUpFrame extends javax.swing.JFrame {
         lblPhoneNumberRes = new javax.swing.JLabel();
         lblEmailRes = new javax.swing.JLabel();
         lblAgeRes = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         txtPw = new javax.swing.JPasswordField();
         txtPwCorrect = new javax.swing.JPasswordField();
@@ -155,9 +154,6 @@ public class SignUpFrame extends javax.swing.JFrame {
 
         lblNameRes.setToolTipText("");
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
-        jLabel1.setText("010 -");
-
         btnBack.setText("이 전");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,7 +204,7 @@ public class SignUpFrame extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblIdRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtId)
+                                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                                     .addComponent(cboGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblAgeRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtAddr)
@@ -221,11 +217,7 @@ public class SignUpFrame extends javax.swing.JFrame {
                                     .addComponent(lblPhoneNumberRes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblNameRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(lblPwRes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addComponent(jLabel1)
-                                        .addGap(18, 18, Short.MAX_VALUE)
-                                        .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addGap(29, 29, 29))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(99, 99, 99)
@@ -286,8 +278,7 @@ public class SignUpFrame extends javax.swing.JFrame {
                         .addGap(50, 50, 50))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblPhoneNumber)
-                        .addComponent(jLabel1)))
+                        .addComponent(lblPhoneNumber)))
                 .addComponent(lblPhoneNumberRes, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -310,46 +301,46 @@ public class SignUpFrame extends javax.swing.JFrame {
     private void txtIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyReleased
         // TODO add your handling code here:
         String id = txtId.getText();
-        if (!id.matches("^.*(?=^.{10,20}$).*$")) {
+        if (!id.matches("^.{10,20}$")) {
             lblIdRes.setText("10자부터 20자 이내로 아이디를 입력하세요.");
             idFlag = false;
             return;
         }
-        if (!id.matches("^[0-9|a-z]*$")) {
+        if (!id.matches("^[0-9a-z]$")) {
             lblIdRes.setText("알파벳 소문자, 숫자를 입력하세요.");
-            idFlag = false;
+            idFlag = false; 
             return;
         }
         idFlag = true;
-        lblIdRes.setText("완료되었습니다.");
+        lblIdRes.setText("");
     }//GEN-LAST:event_txtIdKeyReleased
 
     private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
         // TODO add your handling code here:
         String nameCorrect = txtName.getText();
-        if (!nameCorrect.matches("^.*(?=^.{2,4}$).*$")) {
+        if (!nameCorrect.matches("^.{2,4}$")) {
             lblNameRes.setText("이름은 2자에서 4자까지 입력하세요.");
             nameFlag = false;
             return;
         }
-        if (!nameCorrect.matches("^[가-힣]*$")) {
+        if (!nameCorrect.matches("^[가-힣]$")) {
             lblNameRes.setText("이름을 정확히 입력해주세요.");
             nameFlag = false;
             return;
         }
         nameFlag = true;
-        lblNameRes.setText("완료되었습니다.");
+        lblNameRes.setText("");
     }//GEN-LAST:event_txtNameKeyReleased
 
     private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
         // TODO add your handling code here:
         String age = txtAge.getText();
-        if (!age.matches("^.*(?=^.{6}$).*$")) {
+        if (!age.matches("^.{6}$")) {
             lblAgeRes.setText("생년월일 6자리를 입력해주세요.");
             ageFlag = false;
             return;
         }
-        if (!age.matches("^[0-9]*$")) {
+        if (!age.matches("^[0-9]$")) {
             lblAgeRes.setText("생년월일을 정확히 입력해주세요.");
             ageFlag = false;
             return;
@@ -373,12 +364,7 @@ public class SignUpFrame extends javax.swing.JFrame {
     private void txtPhoneNumberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberKeyReleased
         // TODO add your handling code here:
         String phoneNumber = txtPhoneNumber.getText();
-        if (!phoneNumber.matches("^.*(?=^.{8}$).*$")) {
-            lblPhoneNumberRes.setText("010을 제외한 전화번호 8자리를 입력하세요.");
-            phoneNumberFlag = false;
-            return;
-        }
-        if (!phoneNumber.matches("^[0-9]*$")) {
+        if (!phoneNumber.matches("^010-\\d{4}-\\d{4}$")) {
             lblPhoneNumberRes.setText("전화번호를 정확히 입력해주세요.");
             phoneNumberFlag = false;
             return;
@@ -390,14 +376,13 @@ public class SignUpFrame extends javax.swing.JFrame {
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
         // TODO add your handling code here:
         String email = txtEmail.getText();
-        if (!email.matches("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]"
-                + "([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$")) {
+        if (!email.matches("^\\w+@\\w+([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$")) {
             lblEmailRes.setText("이메일을 정확히 입력해주세요.");
             emailFlag = false;
             return;
         }
         emailFlag = true;
-        lblEmailRes.setText("완료되었습니다.");
+        lblEmailRes.setText("");
     }//GEN-LAST:event_txtEmailKeyReleased
 
     private void cboGenderItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboGenderItemStateChanged
@@ -540,7 +525,6 @@ public class SignUpFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSignUp;
     private javax.swing.JComboBox<String> cboGender;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAddr;
     private javax.swing.JLabel lblAddrRes;
     private javax.swing.JLabel lblAge;
